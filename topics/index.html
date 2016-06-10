@@ -1,0 +1,46 @@
+---
+layout: default
+title: "Explore Topics"
+---
+
+<div class="container topics-container">
+	<div class="jumbotron row">
+		<div class="col-md-2">
+			<svg class = "col-topper"  xmlns="http://www.w3.org/2000/svg" viewbox="-5 -5 500 500">
+			<path class="magnifying-glass" fill="none" stroke="#000" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"/>
+			</svg> 
+		</div>
+		<div class="col-md-10" id="topics-explore">
+			<h1>Explore Topics</h1>
+			<ul class="tag-box inline">
+			{% assign tags_list = site.categories %}  
+			  {% if tags_list.first[0] == null %}
+			    {% for tag in tags_list %} 
+			      <li><a class="btn-tag btn btn-danger" href="#{{ tag | slugify }}">{{ tag | capitalize }} <span>{{ site.tags[tag].size }}</span></a></li>
+			    {% endfor %}
+			  {% else %}
+			    {% for tag in tags_list %} 
+			      <li><a class="btn-tag btn btn-danger" href="#{{ tag[0] | slugify }}">{{ tag[0] | capitalize }} <span>({{ tag[1].size }} post{% if tag[1].size > 1%}s{% endif %})</span></a></li>
+			    {% endfor %}
+			  {% endif %}
+			{% assign tags_list = nil %}
+			</ul>
+		</div>
+
+	</div>
+	{% for cat in site.categories %}
+		<h2 class="topic-name" id="{{ cat | first | slugify}}">{{cat | first}}</h2>
+		<ul class="post-list">
+		  {% for posts in cat %}
+		  	{% for post in posts %}
+			    <li>
+			      <h2>
+			        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+			      </h2>
+			      <p class="post-description">{{ post.excerpt }}</p>
+			    </li>
+			{% endfor %}
+		  {% endfor %}
+		</ul>
+		{% endfor %}
+</div>

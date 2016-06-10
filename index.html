@@ -20,11 +20,11 @@ layout: default
         {% assign tags_list = site.categories %}  
           {% if tags_list.first[0] == null %}
             {% for tag in tags_list %} 
-              <li><a class="btn-tag btn btn-danger btn-sm" href="#{{ tag | slugify }}">{{ tag | capitalize }} <span>{{ site.tags[tag].size }}</span></a></li>
+              <li><a class="btn-tag btn btn-danger btn-sm" href="{{ site.baseurl }}/topics/#{{ tag | slugify }}">{{ tag | capitalize }} <span>{{ site.tags[tag].size }}</span></a></li>
             {% endfor %}
           {% else %}
             {% for tag in tags_list %} 
-              <li><a class="btn-tag btn btn-danger btn-sm" href="{{site.baseurl}}/topics/#{{ tag[0] | slugify }}">{{ tag[0] | capitalize }} <span>({{ tag[1].size }} post{% if tag[1].size > 1%}s{% endif %})</span></a></li>
+              <li><a class="btn-tag btn btn-danger btn-sm" href="{{ site.baseurl }}/topics/#{{ tag[0] | slugify }}">{{ tag[0] | capitalize }} <span>({{ tag[1].size }} post{% if tag[1].size > 1%}s{% endif %})</span></a></li>
             {% endfor %}
           {% endif %}
         {% assign tags_list = nil %}
@@ -56,6 +56,14 @@ layout: default
             c-4.829,0-8.743-3.915-8.743-8.743v-8.743c0-4.829,3.915-8.743,8.743-8.743h166.115c4.829,0,8.743,3.914,8.743,8.743v8.743
             C310.372,450.714,306.458,454.629,301.629,454.629z"/></path></g></svg>
         <h1>Frequently Used</h1>
+        <ul class="post-list">
+            <li>
+              <h2>
+                <a class="post-link" href="/workingatkbia/2016/how-to-record/">How to Gather Audio</a>
+              </h2>
+              <p class="post-description">As you get ready to gather audio for your story in the field, keep these tips in mind.</p>
+            </li>
+        </ul>
       </div>
 
       <div class="home-third">
@@ -111,7 +119,7 @@ layout: default
           <h1 class="">Recent Posts</h1>
 
         <ul class="post-list">
-          {% for post in site.posts %}
+          {% for post in site.posts limit:3 %}
             <li>
               <h2>
                 <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
