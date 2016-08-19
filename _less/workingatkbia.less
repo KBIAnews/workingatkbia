@@ -80,6 +80,14 @@ header.post-header{
 	.jumbotron;
 
 	@media screen and (min-width: 768px){
+		h1{
+			font-size: 45px;
+		}
+
+	}
+
+
+	@media screen and (min-width: 768px){
 		padding-top: 2.2em;
 		padding-bottom: 2em;
 	}
@@ -130,6 +138,26 @@ div.topics-container{
 			border-bottom:4px solid @brand-primary;
 		}
 	}
+	ul.post-list{
+		padding-left: 10px;
+		margin-bottom: 6em;
+		list-style-type: none;
+
+		h2{
+			a{
+				color:#333;
+				
+				&:hover{
+					color: @brand-primary;
+					text-decoration: underline;
+				}
+
+			}
+		}
+	}
+}
+
+div.posts-container{
 	ul.post-list{
 		padding-left: 10px;
 		margin-bottom: 6em;
