@@ -25,7 +25,7 @@ class Post (models.Model):
     slug = models.SlugField("Slug",
         max_length=64,
         unique=True)
-    name = models.SlugField("Name",
+    name = models.CharField("Name",
         max_length=512)
     text = models.TextField("Text",
         help_text="The post's content. Supports Markdown.")
@@ -46,7 +46,7 @@ class Video (models.Model):
     slug = models.SlugField("Slug",
         max_length=64,
         unique=True)
-    name = models.SlugField("Name",
+    name = models.CharField("Name",
         max_length=512)
     embed_url = models.CharField("Embed URL",
         max_length=2048,
