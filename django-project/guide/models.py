@@ -11,6 +11,8 @@ class Topic (models.Model):
         unique=True)
     name = models.CharField("Name",
         max_length=256)
+    order = models.IntegerField("Order",
+                                default=999)
 
     def __str__(self):
         return "%s" % (self.name)
@@ -19,7 +21,7 @@ class Topic (models.Model):
         return "/workingatkbia/topics/%s/" % (self.slug)
 
     class Meta:
-        ordering = ['slug']
+        ordering = ['order','slug']
 
 class Post (models.Model):
     slug = models.SlugField("Slug",

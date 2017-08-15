@@ -129,7 +129,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/workingatkbia/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -154,11 +154,7 @@ AWS_QUERYSTRING_AUTH = False
 BUILD_DIR = os.path.join(PROJECT_ROOT, 'baked')
 AWS_BUCKET_NAME = 'kbia-workingatkbia'
 AWS_S3_ENDPOINT = 'https://s3-accelerate.amazonaws.com'
-# BAKERY_VIEWS= ('stories.views.StoryDetailView',
-#                'stories.views.HomePageView',
-#                'stories.views.RegionDetailView',
-#                'stories.views.IssueDetailView',
-#                'stories.views.PersonDetailView',)
+BAKERY_VIEWS= ('guide.views.HomePageView',)
 
 # Django Markdownify Settings
 MARKDOWNIFY_WHITELIST_TAGS = [

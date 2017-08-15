@@ -1,0 +1,24 @@
+{% extends 'guide/base.html' %}
+
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="work-kbia-head">
+	<h1>Working <span class="at">at</span> KBIA</h1>
+	<h3>Training for KBIA students, employees and community members.</h3>
+</div>
+<div class="home-topic-listing">
+	<h1>Learn how to...</h1>
+
+	<div class="linked-listing-tabular">
+		{% for topic in topics %}
+		<div class="listing-item">
+			<a href="{{topic.get_absolute_url}}" class="listing-item-link">
+				<h3 class="listing-item-name">{{topic.name}}<i class="fa fa-chevron-right listing-item-chevron" aria-hidden="true"></i></h3>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
