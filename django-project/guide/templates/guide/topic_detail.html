@@ -30,4 +30,17 @@
 	</ul>
 </div>
 {% endif %}
+
+{% if object.files.all %}
+<div class="simple-listing file-listing">
+	<h2>File Downloads</h2>
+	<ul>
+		{% for file in object.files.all %}
+		<li><a href="{{file.get_absolute_url}}"><i class="fa fa-paperclip" aria-hidden="true"></i>{{file.name}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+
 {% endblock %}

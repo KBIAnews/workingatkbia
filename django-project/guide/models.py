@@ -65,3 +65,23 @@ class Video (models.Model):
 
     class Meta:
         ordering = ['slug']
+
+class File (models.Model):
+    slug = models.SlugField("Slug",
+        max_length=64,
+        unique=True)
+    name = models.CharField("Name",
+        max_length=512)
+    file = models.FileField("Upload File")
+    topic = models.ForeignKey(Topic,
+                              related_name="files",
+                              related_query_name="file")
+
+    def __str__(self):
+        return "%s" % (self.name)
+
+    def get_absolute_url(self):
+        return self.file.url
+
+    class Meta:
+        ordering = ['slug']
