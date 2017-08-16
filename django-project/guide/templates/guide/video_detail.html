@@ -1,0 +1,27 @@
+{% extends 'guide/base.html' %}
+
+
+{% block title %}{{object.name}} - Video{% endblock %}
+
+{% block content %}
+<div class="work-kbia-head">
+	<h1>{{object.name}}</h1>
+	<!--<h3>Training for KBIA students, employees and community members.</h3>-->
+</div>
+
+<div class="responsive-iframe-contain" style="width:100%; margin-top: 1em;">
+	<iframe class="responsive-iframe" src="{{object.embed_url}}" width="100%" frameborder="0"></iframe>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".responsive-iframe").height(($(".responsive-iframe").width()/16)*9);
+    });
+
+    $(document).on('resize', function(){
+        $(".responsive-iframe").width($('.responsive-iframe-contain').width());
+        $(".responsive-iframe").height(($(".responsive-iframe").width()/16)*9);
+    });
+
+</script>
+{% endblock %}

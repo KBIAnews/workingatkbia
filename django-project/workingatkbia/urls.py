@@ -17,15 +17,16 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf import settings
-from django.views.generic import TemplateView
 
-from guide.views import HomePageView
+from guide.views import HomePageView, TopicDetailView, VideoDetailView, PostDetailView
 
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
                   url(r'^workingatkbia/$', HomePageView.as_view()),
-                  # url(r'stories/(?P<slug>[\w-]+)/$', StoryDetailView.as_view(), name='story'),
+                  url(r'^workingatkbia/topics/(?P<slug>[\w-]+)/$', TopicDetailView.as_view(), name='topic'),
+                  url(r'^workingatkbia/videos/(?P<slug>[\w-]+)/$', VideoDetailView.as_view(), name='video'),
+                  url(r'^workingatkbia/posts/(?P<slug>[\w-]+)/$', PostDetailView.as_view(), name='posts'),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 admin.site.site_header = 'Working @ KBIA Admin'

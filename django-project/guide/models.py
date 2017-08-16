@@ -53,6 +53,9 @@ class Video (models.Model):
     embed_url = models.CharField("Embed URL",
         max_length=2048,
         help_text="The YouTube or Vimeo URL into the vanilla iframe of the video.")
+    topic = models.ForeignKey(Topic,
+                              related_name="videos",
+                              related_query_name="video")
 
     def __str__(self):
         return "%s" % (self.name)

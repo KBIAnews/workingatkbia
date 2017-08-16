@@ -145,7 +145,7 @@ STATICFILES_DIRS =( os.path.join(STATIC_ROOT, 'css/'),
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = 'media.kbia.org'
-AWS_LOCATION = 'mo-health-talks'
+AWS_LOCATION = 'workingatkbia'
 AWS_ACCESS_KEY_ID = os.getenv('KBIA_BAKERIES_AWS_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('KBIA_BAKERIES_AWS_KEY')
 AWS_QUERYSTRING_AUTH = False
@@ -154,7 +154,10 @@ AWS_QUERYSTRING_AUTH = False
 BUILD_DIR = os.path.join(PROJECT_ROOT, 'baked')
 AWS_BUCKET_NAME = 'kbia-workingatkbia'
 AWS_S3_ENDPOINT = 'https://s3-accelerate.amazonaws.com'
-BAKERY_VIEWS= ('guide.views.HomePageView',)
+BAKERY_VIEWS= ('guide.views.HomePageView',
+               'guide.views.TopicDetailView',
+               'guide.views.VideoDetailView',
+               'guide.views.PostDetailView',)
 
 # Django Markdownify Settings
 MARKDOWNIFY_WHITELIST_TAGS = [
@@ -171,3 +174,5 @@ MARKDOWNIFY_WHITELIST_TAGS = [
     'strong',
     'ul',
 ]
+
+MARKDOWNIFY_BLEACH = False

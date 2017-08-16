@@ -1,0 +1,33 @@
+{% extends 'guide/base.html' %}
+
+
+{% block title %}{{object.name}}{% endblock %}
+
+{% block content %}
+<div class="work-kbia-head">
+	<h1>{{object.name}}</h1>
+	<!--<h3>Training for KBIA students, employees and community members.</h3>-->
+</div>
+
+{% if object.videos.all %}
+<div class="simple-listing video-listing">
+	<h2>Videos</h2>
+	<ul>
+		{% for video in object.videos.all %}
+		<li><a href="{{video.get_absolute_url}}"><i class="fa fa-video-camera" aria-hidden="true"></i>{{video.name}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
+{% if object.posts.all %}
+<div class="simple-listing post-listing">
+	<h2>Text Guides</h2>
+	<ul>
+		{% for post in object.posts.all %}
+		<li><a href="{{post.get_absolute_url}}"><i class="fa fa-file-text" aria-hidden="true"></i>{{post.name}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+{% endblock %}
