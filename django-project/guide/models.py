@@ -7,10 +7,10 @@ from django.db import models
 
 class Topic (models.Model):
     slug = models.SlugField("Slug",
-        max_length=64,
-        unique=True)
+                            max_length=64,
+                            unique=True)
     name = models.CharField("Name",
-        max_length=256)
+                            max_length=256)
     order = models.IntegerField("Order",
                                 default=999)
 
@@ -25,15 +25,17 @@ class Topic (models.Model):
 
 class Post (models.Model):
     slug = models.SlugField("Slug",
-        max_length=64,
-        unique=True)
+                            max_length=64,
+                            unique=True)
     name = models.CharField("Name",
-        max_length=512)
+                            max_length=512)
     text = models.TextField("Text",
-        help_text="The post's content. Supports Markdown.")
+                            help_text="The post's content. Supports Markdown.")
     topic = models.ForeignKey(Topic,
-        related_name="posts",
-        related_query_name="post")
+                              related_name="posts",
+                              related_query_name="post",
+                              blank=True,
+                              null=True)
 
     def __str__(self):
         return "%s" % (self.name)
@@ -46,13 +48,13 @@ class Post (models.Model):
 
 class Video (models.Model):
     slug = models.SlugField("Slug",
-        max_length=64,
-        unique=True)
+                            max_length=64,
+                            unique=True)
     name = models.CharField("Name",
-        max_length=512)
+                            max_length=512)
     embed_url = models.CharField("Embed URL",
-        max_length=2048,
-        help_text="The YouTube or Vimeo URL into the vanilla iframe of the video.")
+                                 max_length=2048,
+                                 help_text="The YouTube or Vimeo URL into the vanilla iframe of the video.")
     topic = models.ForeignKey(Topic,
                               related_name="videos",
                               related_query_name="video")
@@ -68,10 +70,10 @@ class Video (models.Model):
 
 class File (models.Model):
     slug = models.SlugField("Slug",
-        max_length=64,
-        unique=True)
+                            max_length=64,
+                            unique=True)
     name = models.CharField("Name",
-        max_length=512)
+                            max_length=512)
     file = models.FileField("Upload File")
     topic = models.ForeignKey(Topic,
                               related_name="files",
@@ -89,10 +91,10 @@ class File (models.Model):
 
 class Link (models.Model):
     slug = models.SlugField("Slug",
-        max_length=64,
-        unique=True)
+                            max_length=64,
+                            unique=True)
     name = models.CharField("Name",
-        max_length=512)
+                            max_length=512)
     url = models.URLField("URL")
     topic = models.ForeignKey(Topic,
                               related_name="links",
