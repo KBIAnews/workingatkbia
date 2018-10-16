@@ -20,6 +20,17 @@
 </div>
 {% endif %}
 
+{% if object.links.all %}
+<div class="simple-listing link-listing">
+	<h2>Links</h2>
+	<ul>
+		{% for link in object.links.all %}
+		<li><a href="{{link.get_absolute_url}}"><i class="fa fa-link" aria-hidden="true"></i>{{link.name}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}
+
 {% if object.posts.all %}
 <div class="simple-listing post-listing">
 	<h2>Text Guides</h2>
@@ -41,6 +52,7 @@
 	</ul>
 </div>
 {% endif %}
+
 
 
 {% endblock %}
