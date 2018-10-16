@@ -85,3 +85,24 @@ class File (models.Model):
 
     class Meta:
         ordering = ['slug']
+
+
+class Link (models.Model):
+    slug = models.SlugField("Slug",
+        max_length=64,
+        unique=True)
+    name = models.CharField("Name",
+        max_length=512)
+    url = models.URLField("URL")
+    topic = models.ForeignKey(Topic,
+                              related_name="links",
+                              related_query_name="link")
+
+    def __str__(self):
+        return "%s" % (self.name)
+
+    def get_absolute_url(self):
+        return self.url
+
+    class Meta:
+        ordering = ['slug']
